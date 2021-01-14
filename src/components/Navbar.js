@@ -1,8 +1,17 @@
-import React, { useState } from 'react';
-import { Button, Container, Grid, Typography } from '@material-ui/core';
+import React, { useState, useContext, useEffect } from 'react';
+import {
+  Button,
+  Container,
+  Fab,
+  Grid,
+  IconButton,
+  Typography,
+} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import NavLink from './NavLink';
+import ThemeToggler from './ThemeToggler';
+import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 
 const useStyles = makeStyles((theme) => ({
   navBar: {
@@ -77,7 +86,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   contactButton: {
-    marginLeft: '2rem',
+    marginLeft: '1rem',
     borderRadius: '2rem',
     border: `1px solid ${theme.palette.primary.main}`,
     fontWeight: 'bold',
@@ -89,14 +98,53 @@ const useStyles = makeStyles((theme) => ({
       border: `1px solid ${theme.palette.primary.main}`,
     },
   },
+  backToTop: {
+    position: 'fixed',
+    top: '2%',
+    left: '96%',
+    zIndex: '100',
+  },
 }));
 
-const Navbar = () => {
+const Navbar = ({ setContactFormOpen }) => {
   const classes = useStyles();
   const [currentPage, setCurrentPage] = useState('home');
-  console.log(currentPage);
+  const [scrolling, setScrolling] = useState(false);
+  const [scrollTop, setScrollTop] = useState(0);
+
+  useEffect(() => {
+    function onScroll() {
+      let currentPosition = window.pageYOffset; // or use document.documentElement.scrollTop;
+      if (currentPosition > scrollTop) {
+        // downscroll code
+        setScrolling(false);
+      } else {
+        // upscroll code
+        setScrolling(true);
+      }
+      setScrollTop(currentPosition <= 0 ? 0 : currentPosition);
+    }
+
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, [scrollTop]);
+
   return (
     <Container id='home'>
+      {scrollTop >= 300 && (
+        <AnchorLink href='#home'>
+          <Fab
+            aria-label='Change Theme'
+            className={classes.backToTop}
+            style={{ background: 'none', boxShadow: 'none' }}
+          >
+            <IconButton style={{ backgroundColor: 'none' }}>
+              <ExpandLessIcon />
+            </IconButton>
+          </Fab>
+        </AnchorLink>
+      )}
+      <ThemeToggler x={scrollTop >= 300 ? 8 : 2} y={96} />
       <Grid
         container
         justify='space-between'
@@ -111,7 +159,7 @@ const Navbar = () => {
             &lt;<span className={classes.brandName}>Austin Adam</span> /&gt;
           </Typography>
         </Grid>
-        <Grid item xs={5}>
+        <Grid item xs={6}>
           <Grid container justify='center' alignItems='center'>
             <NavLink
               currentPage={currentPage}
@@ -138,10 +186,18 @@ const Navbar = () => {
               name='github'
               formattedName='GitHub'
             />
+            {/* <Grid
+              item
+              onMouseEnter={() => setHovering(true)}
+              onMouseLeave={() => setHovering(false)}
+            >
+              
+            </Grid> */}
             <Grid item>
               <Button
                 variant='contained'
                 color='primary'
+                onClick={() => setContactFormOpen(true)}
                 className={classes.contactButton}
               >
                 Contact Me

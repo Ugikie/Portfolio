@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
 const AboutMe = () => {
   const classes = useStyles();
   return (
-    <Paper className={classes.root} id='about'>
+    <Paper className={classes.root} id='about' elevation={10}>
       <Grid
         container
         justify='space-around'

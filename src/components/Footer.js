@@ -17,7 +17,7 @@ const Footer = () => {
   const classes = useStyles();
   return (
     <Paper className={classes.root}>
-      <Grid container justify='space-between' alignItems='center'>
+      <Grid container justify='space-evenly' alignItems='stretch'>
         <FooterLinks />
         <FooterContactInfo />
         <FooterContactForm />

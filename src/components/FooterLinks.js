@@ -31,9 +31,10 @@ const useStyles = makeStyles((theme) => ({
     color: 'white',
     fontSize: 38,
     marginRight: '0.5rem',
-    borderRadius: 2,
-    padding: '0.25rem',
-    backgroundColor: theme.palette.grey[800],
+    borderRadius: 3,
+    backgroundColor: theme.palette.grey[900],
+    boxShadow:
+      '0px 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12)',
   },
 }));
 
@@ -41,7 +42,12 @@ const FooterLinks = () => {
   const classes = useStyles();
   return (
     <Grid item xs={4}>
-      <Grid container direction='column'>
+      <Grid
+        container
+        direction='column'
+        style={{ height: '100%' }}
+        justify='center'
+      >
         <Grid item>
           <img className={classes.logo} src={reactJSLogo} alt='React JS Logo' />
         </Grid>
@@ -91,7 +97,10 @@ const FooterLinks = () => {
               aria={'Austin Adam on LinkedIn'}
               className={classes.navLink}
             >
-              <LinkedInIcon className={classes.socialIcon} />
+              <LinkedInIcon
+                className={classes.socialIcon}
+                style={{ padding: '0.2rem' }}
+              />
             </a>
           </Grid>
           <Grid item>
@@ -103,7 +112,7 @@ const FooterLinks = () => {
               className={classes.navLink}
             >
               <GitHubIcon
-                style={{ padding: '0.4rem' }}
+                style={{ padding: '0.3rem' }}
                 className={classes.socialIcon}
               />
             </a>

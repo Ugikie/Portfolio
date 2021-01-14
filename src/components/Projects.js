@@ -5,6 +5,8 @@ import projectsData from '../projectsData';
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    transition:
+      'color 100ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, background-color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
     padding: '3rem 15rem',
     backgroundColor: theme.palette.background.default,
   },

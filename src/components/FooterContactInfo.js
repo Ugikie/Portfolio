@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
     height: 38,
     marginTop: '0.5rem',
     padding: '0.3rem',
-    backgroundColor: theme.palette.grey[700],
+    backgroundColor: theme.palette.grey[900],
     borderRadius: '50%',
   },
   contactLink: {
@@ -44,20 +44,12 @@ const FooterContactInfo = () => {
     <Grid
       item
       container
-      justify='flex-start'
       alignItems='center'
-      direction='column'
+      justify='center'
       xs={4}
-      spacing={1}
+      style={{ color: '#fafafa' }}
     >
-      <Grid
-        item
-        xs={10}
-        container
-        spacing={2}
-        alignItems='center'
-        style={{ textAlign: 'center', color: 'white' }}
-      >
+      <Grid item xs={7} container spacing={2} alignItems='center'>
         <Grid item>
           <PersonPinCircleIcon className={classes.footerIcon} />
         </Grid>
@@ -65,14 +57,7 @@ const FooterContactInfo = () => {
           <Typography display='inline'>Los Angeles, CA</Typography>
         </Grid>
       </Grid>
-      <Grid
-        item
-        xs={10}
-        container
-        spacing={2}
-        alignItems='center'
-        style={{ textAlign: 'center', color: 'white' }}
-      >
+      <Grid item xs={7} container spacing={2} alignItems='center'>
         <Grid item>
           <PhoneIcon className={classes.footerIcon} />
         </Grid>
@@ -82,26 +67,19 @@ const FooterContactInfo = () => {
           </Typography>
         </Grid>
       </Grid>
-      <Grid
-        item
-        xs={10}
-        container
-        spacing={2}
-        alignItems='center'
-        style={{ textAlign: 'center', color: 'white' }}
-      >
+      <Grid item xs={7} container spacing={2} alignItems='center'>
         <Grid item>
           <MailIcon className={classes.footerIcon} />
         </Grid>
         <Grid item>
           <Typography display='inline'>
             <a
-              href='mailto:austinadam42@gmail.com'
+              href='mailto:hello@austinadam.com'
               target='_blank'
               rel='noopener noreferrer'
               className={classes.contactLink}
             >
-              austinadam42@gmail.com
+              hello@austinadam.com
             </a>
           </Typography>
         </Grid>
