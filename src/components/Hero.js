@@ -85,15 +85,15 @@ const Hero = ({ contactFormOpen, setContactFormOpen }) => {
                     <Typography
                       variant='h3'
                       style={{
-                        padding: '0 2rem',
+                        padding: '0 2.5rem',
                         fontWeight: 'bold',
                         marginBottom: '3rem',
                       }}
                       component='h2'
                       align='center'
                     >
-                      Thanks for taking the time to reach out. How can I help
-                      you today?
+                      Thanks for taking the time to reach out. I would love to
+                      connect with you!
                     </Typography>
                   </Grid>
                 </Grid>
