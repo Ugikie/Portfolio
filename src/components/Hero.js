@@ -33,6 +33,9 @@ const useStyles = makeStyles((theme) => ({
     top: 0,
     left: '95%',
   },
+  heroImage: {
+    paddingTop: '2rem',
+  },
 }));
 
 const Hero = ({ contactFormOpen, setContactFormOpen }) => {
