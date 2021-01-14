@@ -85,7 +85,7 @@ const Hero = ({ contactFormOpen, setContactFormOpen }) => {
                     <Typography
                       variant='h3'
                       style={{
-                        padding: '0 2.5rem',
+                        padding: '0 5rem',
                         fontWeight: 'bold',
                         marginBottom: '3rem',
                       }}
