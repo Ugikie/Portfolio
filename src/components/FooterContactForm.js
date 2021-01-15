@@ -4,6 +4,7 @@ import {
   TextField,
   makeStyles,
   Typography,
+  Hidden,
 } from '@material-ui/core';
 import React from 'react';
 import Snackbar from '@material-ui/core/Snackbar';
@@ -24,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const FooterContactForm = () => {
+const FooterContactForm = ({ width }) => {
   const classes = useStyles();
   const [
     messageInfo,
@@ -43,22 +44,45 @@ const FooterContactForm = () => {
   ] = useEmailJS();
   return (
     <>
-      <Grid xs={4} item>
+      <Grid xs={4} xl={4} item>
         <form onSubmit={submitForm} className={classes.form}>
           <Grid container justify='flex-end'>
-            <Grid item xs={2} container justify='center'>
-              <Grid item>
-                <Typography
-                  variant='h6'
-                  component='h2'
-                  style={{ color: 'white', fontWeight: 'bold' }}
-                >
-                  Contact Me
-                </Typography>
+            <Hidden mdDown>
+              <Grid item xs={3} xl={2} container justify='center'>
+                <Grid item>
+                  <Typography
+                    variant='h6'
+                    component='h2'
+                    style={{ color: 'white', fontWeight: 'bold' }}
+                  >
+                    Contact Me
+                  </Typography>
+                </Grid>
               </Grid>
-            </Grid>
-            <Grid item container xs={10} justify='flex-end' spacing={1}>
-              <Grid item xs={5}>
+            </Hidden>
+            <Grid
+              item
+              container
+              md={12}
+              lg={9}
+              xl={10}
+              justify='flex-end'
+              spacing={1}
+              style={{ paddingLeft: '1rem' }}
+            >
+              <Hidden lgUp>
+                <Grid item xs={12}>
+                  <Typography
+                    variant='h6'
+                    component='h2'
+                    align='center'
+                    style={{ color: 'white', fontWeight: 'bold' }}
+                  >
+                    Contact Me
+                  </Typography>
+                </Grid>
+              </Hidden>
+              <Grid item xs={6} xl={5}>
                 <TextField
                   color='primary'
                   required
@@ -85,7 +109,7 @@ const FooterContactForm = () => {
                 />
               </Grid>
 
-              <Grid item xs={11}>
+              <Grid item xs={12} xl={11}>
                 <TextField
                   color='primary'
                   className={classes.input}
@@ -105,7 +129,9 @@ const FooterContactForm = () => {
                   color='primary'
                   type='submit'
                   size='medium'
-                  style={{ marginTop: '1rem' }}
+                  style={{
+                    marginTop: '0.25rem',
+                  }}
                 >
                   Submit
                 </Button>

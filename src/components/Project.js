@@ -10,6 +10,7 @@ import {
   CardActions,
   Button,
   Grow,
+  Divider,
 } from '@material-ui/core';
 import React, { memo } from 'react';
 import codeIMG from '../code.jpg';
@@ -67,6 +68,9 @@ const useStyles = makeStyles((theme) => ({
       color: theme.palette.primary.main,
     },
   },
+  noMargin: {
+    margin: 0,
+  },
 }));
 
 const Project = ({
@@ -86,8 +90,9 @@ const Project = ({
     <Grid
       item
       xs={12}
-      sm={viewingFullDetails ? 10 : 4}
-      md={viewingFullDetails ? 8 : 3}
+      sm={viewingFullDetails ? 12 : 4}
+      md={viewingFullDetails ? 10 : 3}
+      lg={viewingFullDetails ? 8 : 3}
       className={classes.root}
     >
       <Grow in={true}>
@@ -95,7 +100,7 @@ const Project = ({
           raised
           className={`${classes.card} ${
             !viewingFullDetails ? classes.cardGrow : null
-          }`}
+          } ${width === 'xs' && viewingFullDetails ? classes.noMargin : null}`}
         >
           <CardActionArea onClick={handleClick}>
             <CardMedia
@@ -113,6 +118,7 @@ const Project = ({
                 className={viewingFullDetails ? classes.boldText : null}
               >
                 {name}
+                <Divider />
               </Typography>
               <Typography
                 variant={viewingFullDetails ? 'h6' : 'body2'}

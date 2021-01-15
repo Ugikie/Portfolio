@@ -1,8 +1,9 @@
-import { Paper, makeStyles, Grid, Typography } from '@material-ui/core';
+import { Paper, makeStyles, Grid, Typography, Hidden } from '@material-ui/core';
 import React from 'react';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import reactJSLogo from '../reactjs.png';
 import GitHubIcon from '@material-ui/icons/GitHub';
+import MailIcon from '@material-ui/icons/Mail';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 
 const useStyles = makeStyles((theme) => ({
@@ -41,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
 const FooterLinks = () => {
   const classes = useStyles();
   return (
-    <Grid item xs={4}>
+    <Grid item xs={8} sm={6} md={4}>
       <Grid
         container
         direction='column'
@@ -117,6 +118,22 @@ const FooterLinks = () => {
               />
             </a>
           </Grid>
+          <Hidden smUp>
+            <Grid item>
+              <a
+                href='mailto:hello@austinadam.com'
+                target='_blank'
+                rel='noopener noreferrer'
+                aria={'Send Austin a message via email'}
+                className={classes.navLink}
+              >
+                <MailIcon
+                  style={{ padding: '0.3rem' }}
+                  className={classes.socialIcon}
+                />
+              </a>
+            </Grid>
+          </Hidden>
         </Grid>
       </Grid>
     </Grid>

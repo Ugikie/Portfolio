@@ -1,4 +1,4 @@
-import { Paper, makeStyles, Grid, Typography } from '@material-ui/core';
+import { Paper, makeStyles, Grid, Typography, Hidden } from '@material-ui/core';
 import React from 'react';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import reactJSLogo from '../reactjs.png';
@@ -10,17 +10,27 @@ const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.grey[800],
     padding: '2rem 3rem',
+    [theme.breakpoints.down('lg')]: {
+      padding: '2rem',
+    },
+    [theme.breakpoints.down('md')]: {
+      padding: '1rem',
+    },
   },
 }));
 
-const Footer = () => {
+const Footer = ({ width }) => {
   const classes = useStyles();
   return (
     <Paper className={classes.root}>
       <Grid container justify='space-evenly' alignItems='stretch'>
-        <FooterLinks />
-        <FooterContactInfo />
-        <FooterContactForm />
+        <FooterLinks width={width} />
+        <Hidden xsDown>
+          <FooterContactInfo width={width} />
+        </Hidden>
+        <Hidden smDown>
+          <FooterContactForm width={width} />
+        </Hidden>
       </Grid>
     </Paper>
   );

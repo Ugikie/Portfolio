@@ -31,6 +31,10 @@ const useStyles = makeStyles((theme) => ({
     padding: '0.3rem',
     backgroundColor: theme.palette.grey[900],
     borderRadius: '50%',
+    [theme.breakpoints.down('xs')]: {
+      width: 32,
+      height: 32,
+    },
   },
   contactLink: {
     color: theme.palette.primary.main,
@@ -38,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const FooterContactInfo = () => {
+const FooterContactInfo = ({ width }) => {
   const classes = useStyles();
   return (
     <Grid
@@ -47,32 +51,65 @@ const FooterContactInfo = () => {
       alignItems='center'
       justify='center'
       xs={4}
+      sm={5}
+      md={3}
+      xl={4}
       style={{ color: '#fafafa' }}
     >
-      <Grid item xs={7} container spacing={2} alignItems='center'>
+      <Grid
+        item
+        sm={12}
+        lg={10}
+        xl={7}
+        container
+        spacing={width === 'xs' ? 1 : 2}
+        alignItems='center'
+      >
         <Grid item>
           <PersonPinCircleIcon className={classes.footerIcon} />
         </Grid>
         <Grid item>
-          <Typography display='inline'>Los Angeles, CA</Typography>
+          <Typography variant='body1' display='inline'>
+            Los Angeles, CA
+          </Typography>
         </Grid>
       </Grid>
-      <Grid item xs={7} container spacing={2} alignItems='center'>
+      <Grid
+        item
+        sm={12}
+        lg={10}
+        xl={7}
+        container
+        spacing={width === 'xs' ? 1 : 2}
+        alignItems='center'
+      >
         <Grid item>
           <PhoneIcon className={classes.footerIcon} />
         </Grid>
         <Grid item>
-          <Typography style={{ fontWeight: 'bold' }} display='inline'>
+          <Typography
+            style={{ fontWeight: 'bold' }}
+            variant='body1'
+            display='inline'
+          >
             (805) 915-9181
           </Typography>
         </Grid>
       </Grid>
-      <Grid item xs={7} container spacing={2} alignItems='center'>
+      <Grid
+        item
+        sm={12}
+        lg={10}
+        xl={7}
+        container
+        spacing={width === 'xs' ? 1 : 2}
+        alignItems='center'
+      >
         <Grid item>
           <MailIcon className={classes.footerIcon} />
         </Grid>
         <Grid item>
-          <Typography display='inline'>
+          <Typography variant='body1' display='inline'>
             <a
               href='mailto:hello@austinadam.com'
               target='_blank'
