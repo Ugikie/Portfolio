@@ -1,10 +1,14 @@
 import React from 'react';
 import Avatar from 'avataaars';
 
-const SelfAvatar = () => {
+const SelfAvatar = ({ width }) => {
   return (
     <Avatar
-      style={{ height: '150', position: 'relative', zIndex: 100 }}
+      style={{
+        height: width === 'sm' || width === 'xs' ? 125 : 150,
+        position: 'relative',
+        zIndex: 100,
+      }}
       avatarStyle='Circle'
       topType='ShortHairShortFlat'
       accessoriesType='Blank'

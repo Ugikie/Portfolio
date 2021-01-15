@@ -10,7 +10,10 @@ const Portfolio = () => {
   const [contactFormOpen, setContactFormOpen] = useState(false);
   return (
     <>
-      <Navbar setContactFormOpen={setContactFormOpen} />
+      <Navbar
+        contactFormOpen={contactFormOpen}
+        setContactFormOpen={setContactFormOpen}
+      />
       <Hero
         setContactFormOpen={setContactFormOpen}
         contactFormOpen={contactFormOpen}

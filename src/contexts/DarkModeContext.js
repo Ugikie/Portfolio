@@ -1,14 +1,17 @@
 import React, { createContext, useMemo } from 'react';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import withWidth from '@material-ui/core/withWidth';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import useToggleState from '../hooks/useToggleState';
+import PropTypes from 'prop-types';
 
 export const DarkModeContext = createContext();
 
-export const DarkModeProvider = (props) => {
+const Provider = (props) => {
   // const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
   const [isDarkMode, toggleDarkMode] = useToggleState();
+  const { width } = props;
 
   const prefersDarkMode = isDarkMode;
 
@@ -33,7 +36,7 @@ export const DarkModeProvider = (props) => {
   );
 
   return (
-    <DarkModeContext.Provider value={{ theme, toggleDarkMode }}>
+    <DarkModeContext.Provider value={{ width, theme, toggleDarkMode }}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
         {props.children}
@@ -41,3 +44,11 @@ export const DarkModeProvider = (props) => {
     </DarkModeContext.Provider>
   );
 };
+
+Provider.propTypes = {
+  width: PropTypes.oneOf(['lg', 'md', 'sm', 'xl', 'xs']).isRequired,
+};
+
+const DarkModeProvider = withWidth()(Provider);
+
+export { DarkModeProvider };

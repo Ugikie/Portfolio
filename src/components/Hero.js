@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Divider, Grid, Paper, Typography } from '@material-ui/core';
+import { Divider, Grid, Hidden, Paper, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import heroMe from '../me.svg';
 import IconButton from '@material-ui/core/IconButton';
@@ -12,6 +12,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import Grow from '@material-ui/core/Grow';
 import Fade from '@material-ui/core/Fade';
 import SelfAvatar from './SelfAvatar';
+import { DarkModeContext } from '../contexts/DarkModeContext';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -21,42 +22,95 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
   },
   paper: {
+    // border: '1px solid blue',
+    // height: '100%',
+    padding: '2rem',
     backgroundColor: theme.palette.prefersDarkMode
       ? theme.palette.background.paper
       : theme.palette.background.default,
+    [theme.breakpoints.down('sm')]: {
+      padding: '2rem 6rem',
+    },
+    [theme.breakpoints.down('xs')]: {
+      padding: '0',
+    },
   },
   heading: {
     fontWeight: 'bold',
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '32px',
+    },
   },
   closeIcon: {
     position: 'absolute',
     top: 0,
-    left: '95%',
+    left: '97%',
   },
   heroImage: {
     paddingTop: '2rem',
+    [theme.breakpoints.down('xs')]: {
+      marginTop: '0',
+    },
+  },
+  heroImg: {
+    [theme.breakpoints.down('xs')]: {
+      width: 250,
+    },
+    [theme.breakpoints.up('sm')]: {
+      width: 400,
+    },
+    [theme.breakpoints.up('md')]: {
+      width: 450,
+    },
+    [theme.breakpoints.up('lg')]: {
+      width: 500,
+    },
+  },
+  contactGreeting: {
+    padding: '0 5rem',
+    fontWeight: 'bold',
+    [theme.breakpoints.down('lg')]: {
+      padding: '0',
+    },
+    [theme.breakpoints.up('md')]: {
+      fontSize: '44px',
+    },
+    [theme.breakpoints.up('lg')]: {
+      fontSize: '46px',
+    },
   },
 }));
 
 const Hero = ({ contactFormOpen, setContactFormOpen }) => {
   const classes = useStyles();
   const theme = useTheme();
+  const { width } = useContext(DarkModeContext);
+
+  // const mainGridStyles = contactFormOpen
+  //   ? {}
+  //   : { maxWidth: width === 'xs' ? '90%' : '100%' };
+
   return (
     <Grid
       container
-      justify='space-between'
+      justify='space-evenly'
       alignItems='center'
-      style={{ paddingTop: '3rem', paddingBottom: '0.5rem' }}
       direction='column'
-      spacing={4}
       className={classes.root}
     >
-      <Grid item xs={8}>
+      <Grid
+        item
+        xs={10}
+        sm={10}
+        md={contactFormOpen ? 10 : 8}
+        lg={contactFormOpen ? 8 : 10}
+        // style={mainGridStyles}
+      >
         <Paper
           elevation={theme.palette.prefersDarkMode ? 3 : 0}
           className={classes.paper}
           style={{
-            padding: `${contactFormOpen ? '1.5rem' : '5rem'}`,
+            padding: contactFormOpen ? '1rem 0' : '2rem',
             transition:
               'background-color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
           }}
@@ -69,14 +123,33 @@ const Hero = ({ contactFormOpen, setContactFormOpen }) => {
                 alignItems='center'
                 style={{ position: 'relative' }}
               >
-                <IconButton
-                  onClick={() => setContactFormOpen(false)}
-                  className={classes.closeIcon}
+                <Grid
+                  item
+                  xs={12}
+                  container
+                  justify='flex-end'
+                  alignItems='center'
                 >
-                  <CloseIcon />
-                </IconButton>
-                <Grid item xs={10} container justify='center' spacing={2}>
-                  <SelfAvatar />
+                  <Hidden xsDown>
+                    <Grid
+                      item
+                      style={{ marginBottom: '-4rem', paddingRight: '1rem' }}
+                    >
+                      <IconButton onClick={() => setContactFormOpen(false)}>
+                        <CloseIcon />
+                      </IconButton>
+                    </Grid>
+                  </Hidden>
+                </Grid>
+                <Grid
+                  item
+                  xs={11}
+                  xl={10}
+                  container
+                  justify='center'
+                  spacing={2}
+                >
+                  <SelfAvatar width={width} />
                   <Grid item xs={12}>
                     <Divider
                       light
@@ -84,24 +157,31 @@ const Hero = ({ contactFormOpen, setContactFormOpen }) => {
                       style={{ marginTop: '-4rem', marginBottom: '4rem' }}
                     />
                   </Grid>
-                  <Grid item>
+                  <Grid
+                    item
+                    xs={12}
+                    style={{ paddingLeft: 0, paddingRight: 0 }}
+                  >
                     <Typography
-                      variant='h3'
-                      style={{
-                        padding: '0 5rem',
-                        fontWeight: 'bold',
-                        marginBottom: '3rem',
-                      }}
+                      variant={
+                        width === 'xs' ? 'h5' : width === 'sm' ? 'h4' : 'h3'
+                      }
+                      className={classes.contactGreeting}
                       component='h2'
                       align='center'
+                      gutterBottom
                     >
-                      Thanks for taking the time to reach out. I would love to
-                      connect with you!
+                      {width === 'sm' || width === 'xs'
+                        ? 'Thanks for reaching out. I would love to connect!'
+                        : 'Thanks for taking the time to reach out. I would love to connect with you!'}
                     </Typography>
                   </Grid>
                 </Grid>
                 <Grid item xs={12}>
-                  <ContactForm setContactFormOpen={setContactFormOpen} />
+                  <ContactForm
+                    width={width}
+                    setContactFormOpen={setContactFormOpen}
+                  />
                 </Grid>
               </Grid>
             </Grow>
@@ -115,15 +195,15 @@ const Hero = ({ contactFormOpen, setContactFormOpen }) => {
               >
                 <Grid item className={classes.grid}>
                   <Typography
-                    variant='h3'
+                    variant={width === 'xs' ? 'h4' : 'h3'}
                     component='h2'
                     className={classes.heading}
-                    gutterBottom
+                    gutterBottom={width !== 'xs'}
                   >
                     Full Stack Developer, Thinker & Creator
                   </Typography>
                   <Typography
-                    variant='h5'
+                    variant={width === 'xs' ? 'h6' : 'h5'}
                     component='h2'
                     style={{ fontWeight: 300 }}
                     gutterBottom
@@ -132,7 +212,7 @@ const Hero = ({ contactFormOpen, setContactFormOpen }) => {
                   </Typography>
                 </Grid>
                 <Grid item className={classes.heroImage}>
-                  <img src={heroMe} width='400' alt='' />
+                  <img src={heroMe} className={classes.heroImg} alt='' />
                 </Grid>
               </Grid>
             </Fade>
@@ -140,7 +220,7 @@ const Hero = ({ contactFormOpen, setContactFormOpen }) => {
         </Paper>
       </Grid>
       {!contactFormOpen && (
-        <Grid item>
+        <Grid item style={{ padding: 0 }}>
           <AnchorLink href='#about'>
             <IconButton className='bounce'>
               <KeyboardArrowDownIcon />

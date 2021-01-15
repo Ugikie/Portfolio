@@ -53,7 +53,7 @@ const NavLink = ({ currentPage, setCurrentPage, name, formattedName, url }) => {
             href={url}
             target='_blank'
             rel='noopener noreferrer'
-            aria={name}
+            // aria={name}
             className={`${classes.navLink} ${
               currentPage === name ? classes.navLinkActive : null
             }`}

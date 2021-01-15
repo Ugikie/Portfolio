@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ThemeToggler = ({ x, y }) => {
+const ThemeToggler = ({ inMenu = false, x, y }) => {
   const classes = useStyles();
   const [hovering, setHovering] = useState(false);
   const { theme, toggleDarkMode } = useContext(DarkModeContext);
@@ -58,6 +58,14 @@ const ThemeToggler = ({ x, y }) => {
   const changeTheme = () => {
     toggleDarkMode();
   };
+  const styles = inMenu
+    ? {}
+    : {
+        position: 'fixed',
+        top: `${x}%`,
+        left: `${y}%`,
+        zIndex: '100',
+      };
   return (
     <Fab
       aria-label='Change Theme'
@@ -65,12 +73,7 @@ const ThemeToggler = ({ x, y }) => {
       className={`${classes.themeToggler} ${
         prefersDarkMode ? classes.togglerDark : classes.togglerLight
       }`}
-      style={{
-        position: 'fixed',
-        top: `${x}%`,
-        left: `${y}%`,
-        zIndex: '100',
-      }}
+      style={styles}
       onMouseEnter={() => setHovering(true)}
       onMouseLeave={() => setHovering(false)}
     >

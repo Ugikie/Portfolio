@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
   // },
 }));
 
-const ContactForm = ({ setContactFormOpen }) => {
+const ContactForm = ({ width, setContactFormOpen }) => {
   const classes = useStyles();
   const [
     messageInfo,
@@ -46,8 +46,15 @@ const ContactForm = ({ setContactFormOpen }) => {
     <>
       <form onSubmit={submitForm} className={classes.form}>
         <Grid container justify='center'>
-          <Grid item container xs={8} justify='flex-end' spacing={4}>
-            <Grid item xs={6}>
+          <Grid
+            item
+            container
+            xs={10}
+            sm={8}
+            justify={width === 'xs' ? 'center' : 'flex-end'}
+            spacing={4}
+          >
+            <Grid item xs={12} md={6}>
               <TextField
                 color='primary'
                 required
@@ -60,7 +67,7 @@ const ContactForm = ({ setContactFormOpen }) => {
                 variant='filled'
               />
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={12} md={6}>
               <TextField
                 color='primary'
                 required
@@ -80,7 +87,7 @@ const ContactForm = ({ setContactFormOpen }) => {
                 fullWidth
                 required
                 multiline
-                rows={8}
+                rows={width === 'sm' || width === 'xs' ? 4 : 8}
                 label='Message'
                 value={message}
                 onChange={handleMessageChange}
@@ -90,7 +97,9 @@ const ContactForm = ({ setContactFormOpen }) => {
             <Grid item style={{ paddingRight: 0 }}>
               <Button
                 color='secondary'
-                size='large'
+                size={
+                  width === 'sm' ? 'medium' : width === 'xs' ? 'small' : 'large'
+                }
                 onClick={() => setContactFormOpen(false)}
               >
                 Cancel
@@ -101,7 +110,9 @@ const ContactForm = ({ setContactFormOpen }) => {
                 variant='contained'
                 color='primary'
                 type='submit'
-                size='large'
+                size={
+                  width === 'sm' ? 'medium' : width === 'xs' ? 'small' : 'large'
+                }
               >
                 Submit
               </Button>
