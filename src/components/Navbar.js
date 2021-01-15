@@ -254,8 +254,7 @@ const Navbar = ({ contactFormOpen, setContactFormOpen }) => {
             onClick={() => setCurrentPage('home')}
             className={classes.navbarBrand}
           >
-            &lt;<span className={classes.brandName}>{width}Austin Adam</span>{' '}
-            /&gt;
+            &lt;<span className={classes.brandName}>Austin Adam</span> /&gt;
           </Typography>
         </Grid>
         <Hidden mdUp>
