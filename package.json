@@ -22,11 +22,11 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "predeploy": "npm run build && npm run copy",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "copy": "copy ./CNAME ./build/CNAME"
+    "add-domain": "echo www.austinadam.com > build/CNAME"
   },
   "eslintConfig": {
     "extends": [
