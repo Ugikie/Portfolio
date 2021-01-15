@@ -38,7 +38,6 @@ const AboutMe = ({ width }) => {
         container
         justify='space-around'
         alignItems='center'
-        spacing={10}
         className={classes.grid}
       >
         <Hidden mdDown>
@@ -86,7 +85,7 @@ const AboutMe = ({ width }) => {
             container
             direction='column'
             spacing={1}
-            style={{ paddingLeft: '2rem', marginTop: '1rem' }}
+            style={{ paddingLeft: '2rem' }}
           >
             <Interest topic='Node.js' />
             <Interest topic='React.js' />
