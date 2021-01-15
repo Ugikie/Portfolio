@@ -22,8 +22,8 @@ const Portfolio = () => {
         contactFormOpen={contactFormOpen}
       />
       <AboutMe width={width} />
-      <Projects />
-      <Footer />
+      <Projects width={width} />
+      <Footer width={width} />
     </>
   );
 };

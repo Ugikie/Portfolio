@@ -5,17 +5,24 @@ import projectsData from '../projectsData';
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    flexGrow: 1,
     transition:
       'color 100ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, background-color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
     padding: '3rem 15rem',
     backgroundColor: theme.palette.background.default,
+    [theme.breakpoints.down('lg')]: {
+      padding: '3rem 6rem',
+    },
+    [theme.breakpoints.down('md')]: {
+      padding: '2rem',
+    },
   },
   header: {
     fontWeight: 'bold',
   },
 }));
 
-const Projects = () => {
+const Projects = ({ width }) => {
   const classes = useStyles();
   const [viewingCard, setViewingCard] = useState(-1);
 
@@ -41,15 +48,21 @@ const Projects = () => {
         </Typography>
       </Grid>
       {viewingCard === -1 ? (
-        projectsData.map((project) => (
-          <Project
-            key={project.id}
-            setViewingCard={setViewingCard}
-            project={project}
-          />
-        ))
+        projectsData.map((project, idx) => {
+          return (
+            idx <= (width === 'sm' || width === 'xs' ? 5 : 7) && (
+              <Project
+                width={width}
+                key={project.id}
+                setViewingCard={setViewingCard}
+                project={project}
+              />
+            )
+          );
+        })
       ) : (
         <Project
+          width={width}
           setViewingCard={setViewingCard}
           project={projectsData[viewingCard]}
           viewingFullDetails={true}

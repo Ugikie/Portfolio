@@ -14,8 +14,8 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: '5rem',
     paddingBottom: '5rem',
     [theme.breakpoints.down('xs')]: {
-      paddingTop: 0,
-      paddingBottom: 0,
+      paddingTop: '2rem',
+      paddingBottom: '2rem',
     },
     // border: '1px solid red',
   },
@@ -75,6 +75,8 @@ const AboutMe = ({ width }) => {
             variant='body1'
             component='h2'
             className={classes.mainText}
+            gutterBottom
+            paragraph
           >
             My #1 motto is "Underpromise, and overdeliver", but that doesn't
             mean I can't guarentee excellence in the things I create! My main

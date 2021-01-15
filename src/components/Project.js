@@ -17,13 +17,22 @@ import codeIMG from '../code.jpg';
 const useStyles = makeStyles((theme) => ({
   root: {},
   card: {
-    width: '100%',
+    margin: '1.75rem',
     transition:
       'transform 300ms ease-in-out, color 100ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, background-color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
+    [theme.breakpoints.down('lg')]: {
+      margin: '1.25rem',
+    },
+    [theme.breakpoints.down('md')]: {
+      margin: '1rem',
+    },
+    [theme.breakpoints.down('sm')]: {
+      margin: '0.5rem',
+    },
   },
   cardGrow: {
     '&:hover': {
-      transform: 'scale(1.05)',
+      transform: 'scale(1.05) !important',
     },
     '&:hover .MuiCardMedia-root': {
       transform: 'scale(1.05)',
@@ -39,6 +48,15 @@ const useStyles = makeStyles((theme) => ({
     height: 225,
     width: '100%',
     backgroundSize: 'cover',
+    [theme.breakpoints.down('lg')]: {
+      height: 185,
+    },
+    [theme.breakpoints.down('md')]: {
+      height: 150,
+    },
+    [theme.breakpoints.down('xs')]: {
+      height: 225,
+    },
   },
   viewingFullDetailsCard: {
     height: 550,
@@ -51,7 +69,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Project = ({ project, setViewingCard, viewingFullDetails = false }) => {
+const Project = ({
+  width,
+  project,
+  setViewingCard,
+  viewingFullDetails = false,
+}) => {
   const classes = useStyles();
   const { name, description, descriptionFull, demoURL, img, imgFull } = project;
 
@@ -60,7 +83,13 @@ const Project = ({ project, setViewingCard, viewingFullDetails = false }) => {
   };
 
   return (
-    <Grid item xs={viewingFullDetails ? 8 : 3} className={classes.root}>
+    <Grid
+      item
+      xs={12}
+      sm={viewingFullDetails ? 10 : 4}
+      md={viewingFullDetails ? 8 : 3}
+      className={classes.root}
+    >
       <Grow in={true}>
         <Card
           raised
@@ -102,7 +131,11 @@ const Project = ({ project, setViewingCard, viewingFullDetails = false }) => {
               color='primary'
               onClick={handleClick}
             >
-              {viewingFullDetails ? 'Back to Projects' : 'More Details'}
+              {viewingFullDetails
+                ? 'Back to Projects'
+                : width === 'xl' || width === 'lg'
+                ? 'More Details'
+                : 'Details'}
             </Button>
             <Button
               size={viewingFullDetails ? 'large' : 'small'}
@@ -113,7 +146,7 @@ const Project = ({ project, setViewingCard, viewingFullDetails = false }) => {
                   Demo
                 </a>
               ) : (
-                'Demo (Coming Soon)'
+                `Demo (${width === 'xl' ? 'Coming Soon' : 'WIP'})`
               )}
             </Button>
           </CardActions>

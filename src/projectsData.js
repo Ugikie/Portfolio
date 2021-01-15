@@ -56,6 +56,12 @@ const projectsData = [
     description: 'Currently in development',
     descriptionFull: 'Currently in development',
   },
+  {
+    id: 8,
+    name: 'Work in Progress',
+    description: 'Currently in development',
+    descriptionFull: 'Currently in development',
+  },
 ];
 
 export default projectsData;
