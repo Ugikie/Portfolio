@@ -129,6 +129,7 @@ const FooterContactForm = ({ width }) => {
                   color='primary'
                   type='submit'
                   size='medium'
+                  disabled={sentMessage}
                   style={{
                     marginTop: '0.25rem',
                   }}
