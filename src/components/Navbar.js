@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {
   Button,
   Container,
-  Drawer,
+  SwipeableDrawer,
   Fab,
   Grid,
   IconButton,
@@ -21,8 +21,6 @@ import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 import HomeIcon from '@material-ui/icons/Home';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import AccountTreeIcon from '@material-ui/icons/AccountTree';
@@ -256,10 +254,11 @@ const Navbar = ({ width, contactFormOpen, setContactFormOpen }) => {
           </Typography>
         </Grid>
         <Hidden mdUp>
-          <Drawer
+          <SwipeableDrawer
             anchor={'right'}
             open={drawerOpen}
             onClose={() => setDrawerOpen(false)}
+            onOpen={() => setDrawerOpen(true)}
           >
             <div
               role='presentation'
@@ -310,7 +309,7 @@ const Navbar = ({ width, contactFormOpen, setContactFormOpen }) => {
                 </ListItem>
               </List>
             </div>
-          </Drawer>
+          </SwipeableDrawer>
         </Hidden>
         <Hidden smDown>
           <Grid item xs={7}>
