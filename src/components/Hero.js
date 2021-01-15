@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Divider, Grid, Hidden, Paper, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import heroMe from '../me.svg';
@@ -12,7 +12,6 @@ import CloseIcon from '@material-ui/icons/Close';
 import Grow from '@material-ui/core/Grow';
 import Fade from '@material-ui/core/Fade';
 import SelfAvatar from './SelfAvatar';
-import { DarkModeContext } from '../contexts/DarkModeContext';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -81,10 +80,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Hero = ({ contactFormOpen, setContactFormOpen }) => {
+const Hero = ({ width, contactFormOpen, setContactFormOpen }) => {
   const classes = useStyles();
   const theme = useTheme();
-  const { width } = useContext(DarkModeContext);
 
   // const mainGridStyles = contactFormOpen
   //   ? {}

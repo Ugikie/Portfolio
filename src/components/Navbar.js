@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Button,
   Container,
@@ -16,7 +16,6 @@ import NavLink from './NavLink';
 import ThemeToggler from './ThemeToggler';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import MenuIcon from '@material-ui/icons/Menu';
-import { DarkModeContext } from '../contexts/DarkModeContext';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
@@ -181,9 +180,8 @@ const positions = {
   },
 };
 
-const Navbar = ({ contactFormOpen, setContactFormOpen }) => {
+const Navbar = ({ width, contactFormOpen, setContactFormOpen }) => {
   const classes = useStyles();
-  const { width } = useContext(DarkModeContext);
   const [currentPage, setCurrentPage] = useState('home');
   const [scrolling, setScrolling] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -254,7 +252,8 @@ const Navbar = ({ contactFormOpen, setContactFormOpen }) => {
             onClick={() => setCurrentPage('home')}
             className={classes.navbarBrand}
           >
-            &lt;<span className={classes.brandName}>Austin Adam</span> /&gt;
+            &lt;<span className={classes.brandName}>{width}Austin Adam</span>{' '}
+            /&gt;
           </Typography>
         </Grid>
         <Hidden mdUp>
@@ -304,7 +303,7 @@ const Navbar = ({ contactFormOpen, setContactFormOpen }) => {
                   <Button
                     variant='contained'
                     color='primary'
-                    onClick={() => setContactFormOpen(true)}
+                    onClick={() => setContactFormOpen((st) => !st)}
                     className={classes.contactButton}
                   >
                     Contact Me

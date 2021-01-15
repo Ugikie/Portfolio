@@ -1,18 +1,15 @@
 import {
   Button,
   Grid,
-  Paper,
   TextField,
   makeStyles,
   Typography,
 } from '@material-ui/core';
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
-import emailjs, { init } from 'emailjs-com';
 import useEmailJS from '../hooks/useEmailJS';
-init('user_GcPNCeM7wTsytXQUmpneW');
 
 const useStyles = makeStyles((theme) => ({
   form: {},

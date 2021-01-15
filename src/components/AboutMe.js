@@ -1,21 +1,25 @@
 import React from 'react';
-import { Grid, Paper, Typography } from '@material-ui/core';
+import { Grid, Hidden, Paper, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import codeSVG from '../code.svg';
 import Interest from './Interest';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    height: '75vh',
+    // height: '75vh',
     backgroundColor: theme.palette.primary.main,
   },
   grid: {
-    height: '100%',
-    padding: '5rem 9rem',
+    // height: '100%',
+    paddingTop: '5rem',
+    paddingBottom: '5rem',
+    [theme.breakpoints.down('xs')]: {
+      paddingTop: 0,
+      paddingBottom: 0,
+    },
+    // border: '1px solid red',
   },
-  about: {
-    height: '100%',
-  },
+  about: {},
   mainText: {
     color: 'white',
     lineHeight: '1.5',
@@ -26,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const AboutMe = () => {
+const AboutMe = ({ width }) => {
   const classes = useStyles();
   return (
     <Paper className={classes.root} id='about' elevation={10}>
@@ -34,17 +38,24 @@ const AboutMe = () => {
         container
         justify='space-around'
         alignItems='center'
+        spacing={10}
         className={classes.grid}
       >
-        <Grid item>
-          <img src={codeSVG} alt='Code' width='600' />
-        </Grid>
-        <Grid item xs={5} className={classes.about}>
-          <Typography variant='h4' component='h2' className={classes.title}>
+        <Hidden mdDown>
+          <Grid item>
+            <img src={codeSVG} alt='Code' width='600' />
+          </Grid>
+        </Hidden>
+        <Grid item xs={10} sm={8} lg={5} className={classes.about}>
+          <Typography
+            variant={width === 'xs' ? 'h6' : 'h4'}
+            component='h2'
+            className={classes.title}
+          >
             Full Stack Developer
           </Typography>
           <Typography
-            variant='h3'
+            variant={width === 'xs' ? 'h4' : 'h3'}
             component='h2'
             className={classes.mainText}
             gutterBottom
@@ -75,7 +86,7 @@ const AboutMe = () => {
             container
             direction='column'
             spacing={1}
-            style={{ marginTop: '1rem' }}
+            style={{ paddingLeft: '2rem', marginTop: '1rem' }}
           >
             <Interest topic='Node.js' />
             <Interest topic='React.js' />
@@ -84,7 +95,11 @@ const AboutMe = () => {
             <Interest topic='Game Development' />
             <Interest topic='Artificial Intelligence' />
             <Interest topic='RF Technologies' />
-            <Interest topic='Digital Electronics & Microprocessors' />
+            {width === 'xs' ? (
+              <Interest topic='Digital Media Production' />
+            ) : (
+              <Interest topic='Digital Electronics & Microprocessors' />
+            )}
           </Grid>
         </Grid>
       </Grid>

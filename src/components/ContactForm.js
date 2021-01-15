@@ -110,6 +110,7 @@ const ContactForm = ({ width, setContactFormOpen }) => {
                 variant='contained'
                 color='primary'
                 type='submit'
+                disabled={sentMessage}
                 size={
                   width === 'sm' ? 'medium' : width === 'xs' ? 'small' : 'large'
                 }
