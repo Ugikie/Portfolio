@@ -25,7 +25,6 @@ const Projects = () => {
       container
       justify='center'
       alignItems='center'
-      spacing={4}
       className={classes.root}
     >
       <Grid item xs={12}>
