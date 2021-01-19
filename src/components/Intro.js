@@ -48,14 +48,15 @@ const AboutMe = ({ width }) => {
             component='p'
             align='center'
           >
-            Just a simple guy who lives, breathes, and dreams code, ready to
-            create the next big thing! I have always believed that its easier to
-            come up with good ideas when you have a better sense of what you are
-            capable of with the skills you have. So I have always taken it upon
-            myself to learn as much as I can about the things that interest me.
-            I'm looking to join a team of passionate developers who will help me
-            gain more experience as a full stack developer, and introduce me to
-            new concepts along the way!
+            Freshly graduated with a bachelor's in computer engineering, I live,
+            breathe, and dream code, and I'm ready to create the next big thing!
+            I have always believed that its easier to come up with good ideas
+            when you have a better sense of what you are capable of with the
+            skills you have. So I have always strived to learn as much as I can
+            about the things that interest me. I'm looking to join a team of
+            passionate developers who will help me gain more experience as a
+            full stack developer, and introduce me to new concepts along the
+            way!
           </Typography>
         </Grid>
       </Grid>
