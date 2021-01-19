@@ -92,7 +92,11 @@ const AboutMe = ({ width }) => {
             <Interest topic='Custom APIs' />
             <Interest topic='Discord Bot Integration' />
             <Interest topic='Game Development' />
-            <Interest topic='Artificial Intelligence' />
+            {width === 'xs' ? (
+              <Interest topic='Artificial Intelligence (ML &amp; NNs)' />
+            ) : (
+              <Interest topic='Neural Networks / Machine Learning' />
+            )}
             <Interest topic='RF Technologies' />
             {width === 'xs' ? (
               <Interest topic='Digital Media Production' />

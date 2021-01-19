@@ -40,7 +40,7 @@ const AboutMe = ({ width }) => {
             align='center'
             gutterBottom
           >
-            Hey, I'm Austin! 👋
+            Hey, I'm Austin!
           </Typography>
           <Typography
             style={{ color: 'white' }}
