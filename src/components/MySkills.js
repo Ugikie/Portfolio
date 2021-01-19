@@ -44,7 +44,7 @@ const MySkills = () => {
             align='center'
             paragraph
           >
-            Languages and Technologies I am familiar with and use frequently in
+            Languages and Technologies I'm familiar with and use frequently in
             my projects
             <Divider variant='middle' light />
           </Typography>
