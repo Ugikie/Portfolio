@@ -14,6 +14,7 @@ import {
 } from '@material-ui/core';
 import React, { memo } from 'react';
 import codeIMG from '../code.jpg';
+import AnchorLink from 'react-anchor-link-smooth-scroll';
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -46,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
   },
   media: {
     transition: 'transform 300ms ease-in-out',
-    height: 225,
+    height: 240,
     width: '100%',
     backgroundSize: 'cover',
     [theme.breakpoints.down('lg')]: {
@@ -103,46 +104,57 @@ const Project = ({
           } ${width === 'xs' && viewingFullDetails ? classes.noMargin : null}`}
         >
           <CardActionArea onClick={handleClick}>
-            <CardMedia
-              className={`${classes.media} ${
-                viewingFullDetails ? classes.viewingFullDetailsCard : null
-              }`}
-              image={img ? (viewingFullDetails ? imgFull : img) : codeIMG}
-              title='Contemplative Reptile'
-            />
-            <CardContent>
-              <Typography
-                gutterBottom
-                variant={viewingFullDetails ? 'h4' : 'h5'}
-                component='h2'
-                className={viewingFullDetails ? classes.boldText : null}
-              >
-                {name}
-                <Divider />
-              </Typography>
-              <Typography
-                variant={viewingFullDetails ? 'h6' : 'body2'}
-                color='textSecondary'
-                component='p'
-                className={viewingFullDetails ? classes.lightText : null}
-              >
-                {viewingFullDetails ? descriptionFull : description}
-              </Typography>
-            </CardContent>
+            <AnchorLink
+              // onClick={handleClick}
+              href='#projects'
+              style={{ textDecoration: 'none', color: 'inherit' }}
+            >
+              <CardMedia
+                className={`${classes.media} ${
+                  viewingFullDetails ? classes.viewingFullDetailsCard : null
+                }`}
+                image={img ? (viewingFullDetails ? imgFull : img) : codeIMG}
+                title='Contemplative Reptile'
+              />
+              <CardContent>
+                <Typography
+                  gutterBottom
+                  variant={viewingFullDetails ? 'h4' : 'h5'}
+                  component='h2'
+                  className={viewingFullDetails ? classes.boldText : null}
+                >
+                  {name}
+                  <Divider />
+                </Typography>
+                <Typography
+                  variant={viewingFullDetails ? 'h6' : 'body2'}
+                  color='textSecondary'
+                  component='p'
+                  className={viewingFullDetails ? classes.lightText : null}
+                >
+                  {viewingFullDetails ? descriptionFull : description}
+                </Typography>
+              </CardContent>
+            </AnchorLink>
           </CardActionArea>
           <CardActions>
-            <Button
-              size={viewingFullDetails ? 'large' : 'small'}
-              variant='contained'
-              color='primary'
+            <AnchorLink
               onClick={handleClick}
+              href='#projects'
+              style={{ textDecoration: 'none' }}
             >
-              {viewingFullDetails
-                ? 'Back to Projects'
-                : width === 'xl' || width === 'lg'
-                ? 'More Details'
-                : 'Details'}
-            </Button>
+              <Button
+                size={viewingFullDetails ? 'large' : 'small'}
+                variant='contained'
+                color='primary'
+              >
+                {viewingFullDetails
+                  ? 'Back to Projects'
+                  : width === 'xl' || width === 'lg'
+                  ? 'More Details'
+                  : 'Details'}
+              </Button>
+            </AnchorLink>
             <Button
               size={viewingFullDetails ? 'large' : 'small'}
               color='primary'
