@@ -18,11 +18,11 @@ import codeIMG from '../code.jpg';
 const useStyles = makeStyles((theme) => ({
   root: {},
   card: {
-    margin: '2rem 1.75rem',
+    margin: '2rem 1rem',
     transition:
       'transform 300ms ease-in-out, color 100ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, background-color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
     [theme.breakpoints.down('lg')]: {
-      margin: '1.5rem 1.25rem',
+      margin: '1.5rem 1rem',
     },
     [theme.breakpoints.down('md')]: {
       margin: '1.25rem 1rem',

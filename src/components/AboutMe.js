@@ -59,7 +59,7 @@ const AboutMe = ({ width }) => {
             className={classes.mainText}
             gutterBottom
           >
-            A little bit about me.
+            A bit more about me.
           </Typography>
           <Typography
             variant='body1'
@@ -89,8 +89,6 @@ const AboutMe = ({ width }) => {
             spacing={1}
             style={{ paddingLeft: '2rem' }}
           >
-            <Interest topic='Node.js' />
-            <Interest topic='React.js' />
             <Interest topic='Custom APIs' />
             <Interest topic='Discord Bot Integration' />
             <Interest topic='Game Development' />

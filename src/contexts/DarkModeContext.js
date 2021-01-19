@@ -19,7 +19,8 @@ const Provider = (props) => {
     () =>
       createMuiTheme({
         typography: {
-          fontFamily: ['"Source Sans Pro", sans-serif'].join(','),
+          // fontFamily: ['"Source Sans Pro", sans-serif'].join(','),
+          fontFamily: ['"Titillium Web", sans-serif'].join(','),
         },
         palette: {
           type: prefersDarkMode ? 'dark' : 'light',

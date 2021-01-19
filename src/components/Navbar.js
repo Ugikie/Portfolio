@@ -281,21 +281,39 @@ const Navbar = ({ width, contactFormOpen, setContactFormOpen }) => {
                 </Grid>
               </Grid>
               <List>
-                {['Home', 'About', 'Projects', 'GitHub'].map((text, index) => (
-                  <AnchorLink
-                    href={`#${text.toLowerCase()}`}
-                    className={`${classes.menuLink} ${
-                      currentPage === text.toLowerCase()
-                        ? classes.menuLinkActive
-                        : null
-                    }`}
-                  >
-                    <ListItem button key={text}>
-                      <ListItemIcon>{icons[index]}</ListItemIcon>
-                      <ListItemText primary={text} />
-                    </ListItem>
-                  </AnchorLink>
-                ))}
+                {['Home', 'About', 'Projects', 'GitHub'].map((text, index) => {
+                  return text.toLowerCase() === 'github' ? (
+                    <a
+                      href={'https://github.com/Ugikie'}
+                      target='_blank'
+                      rel='noopener noreferrer'
+                      className={`${classes.menuLink} ${
+                        currentPage === text.toLowerCase()
+                          ? classes.menuLinkActive
+                          : null
+                      }`}
+                    >
+                      <ListItem button key={text}>
+                        <ListItemIcon>{icons[index]}</ListItemIcon>
+                        <ListItemText primary={text} />
+                      </ListItem>
+                    </a>
+                  ) : (
+                    <AnchorLink
+                      href={`#${text.toLowerCase()}`}
+                      className={`${classes.menuLink} ${
+                        currentPage === text.toLowerCase()
+                          ? classes.menuLinkActive
+                          : null
+                      }`}
+                    >
+                      <ListItem button key={text}>
+                        <ListItemIcon>{icons[index]}</ListItemIcon>
+                        <ListItemText primary={text} />
+                      </ListItem>
+                    </AnchorLink>
+                  );
+                })}
                 <Divider />
                 <ListItem key={100} style={{ marginTop: '1rem' }}>
                   <Button

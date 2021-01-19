@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
     transition:
       'color 100ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, background-color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
     padding: '3rem 15rem',
-    backgroundColor: theme.palette.background.default,
+    // backgroundColor: theme.palette.background.default,
     [theme.breakpoints.down('lg')]: {
       padding: '3rem 6rem',
     },
