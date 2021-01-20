@@ -47,6 +47,9 @@ const useStyles = makeStyles((theme) => ({
   },
   heroImage: {
     paddingTop: '2rem',
+    [theme.breakpoints.down('md')]: {
+      paddingTop: '0',
+    },
     [theme.breakpoints.down('xs')]: {
       marginTop: '0',
     },
@@ -60,9 +63,6 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.up('md')]: {
       width: 450,
-    },
-    [theme.breakpoints.up('lg')]: {
-      width: 500,
     },
   },
   contactGreeting: {
