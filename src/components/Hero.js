@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     // border: '1px solid blue',
     // height: '100%',
-    padding: '2rem',
+    // padding: '2rem',
     backgroundColor: theme.palette.prefersDarkMode
       ? theme.palette.background.paper
       : theme.palette.background.default,
@@ -108,7 +108,7 @@ const Hero = ({ width, contactFormOpen, setContactFormOpen }) => {
           elevation={theme.palette.prefersDarkMode ? 3 : 0}
           className={classes.paper}
           style={{
-            padding: contactFormOpen ? '1rem 0' : '2rem',
+            // padding: contactFormOpen ? '1rem 0' : '2rem',
             transition:
               'background-color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
           }}
