@@ -15,7 +15,7 @@ import SelfAvatar from './SelfAvatar';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    height: '90vh',
+    padding: '7rem 0',
   },
   grid: {
     textAlign: 'center',
@@ -23,15 +23,12 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     // border: '1px solid blue',
     // height: '100%',
-    // padding: '2rem',
+    padding: '2rem',
     backgroundColor: theme.palette.prefersDarkMode
       ? theme.palette.background.paper
       : theme.palette.background.default,
-    [theme.breakpoints.down('sm')]: {
-      padding: '2rem 6rem',
-    },
     [theme.breakpoints.down('xs')]: {
-      padding: '0',
+      padding: '1rem',
     },
   },
   heading: {
@@ -56,13 +53,13 @@ const useStyles = makeStyles((theme) => ({
   },
   heroImg: {
     [theme.breakpoints.down('xs')]: {
-      width: 250,
+      width: 200,
     },
     [theme.breakpoints.up('sm')]: {
-      width: 400,
+      width: 350,
     },
     [theme.breakpoints.up('md')]: {
-      width: 450,
+      width: 400,
     },
   },
   contactGreeting: {
@@ -197,13 +194,16 @@ const Hero = ({ width, contactFormOpen, setContactFormOpen }) => {
                     component='h2'
                     className={classes.heading}
                     gutterBottom={width !== 'xs'}
+                    style={{ textShadow: '0 0.05rem 0.1rem rgba(0,0,0,0.25)' }}
                   >
                     Full Stack Developer, Thinker & Creator
                   </Typography>
                   <Typography
                     variant={width === 'xs' ? 'h6' : 'h5'}
                     component='h2'
-                    style={{ fontWeight: 300 }}
+                    style={{
+                      fontWeight: 300,
+                    }}
                     gutterBottom
                   >
                     I create new things with code and love it every day

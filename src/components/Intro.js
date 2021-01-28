@@ -3,6 +3,7 @@ import { Grid, Hidden, Paper, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import codeSVG from '../code.svg';
 import Interest from './Interest';
+import picOfMe from '../picofme_cropped.JPG';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -11,8 +12,8 @@ const useStyles = makeStyles((theme) => ({
   },
   grid: {
     // height: '100%',
-    paddingTop: '5rem',
-    paddingBottom: '5rem',
+    paddingTop: '3rem',
+    paddingBottom: '3rem',
     [theme.breakpoints.down('xs')]: {
       paddingTop: '2rem',
       paddingBottom: '2rem',
@@ -28,25 +29,45 @@ const AboutMe = ({ width }) => {
       <Grid
         container
         alignItems='center'
-        justify='flex-start'
-        direction='column'
+        justify='center'
         className={classes.grid}
       >
-        <Grid item xs={10} sm={8} lg={6}>
+        <Hidden xsDown>
+          <Grid item xs={6} sm={5} lg={4}>
+            <img
+              style={{
+                maxWidth: width === 'sm' || width === 'md' ? '85%' : '70%',
+                borderRadius: 10,
+                boxShadow:
+                  '0px 6px 6px -3px rgba(0,0,0,0.2), 0px 10px 14px 1px rgba(0,0,0,0.14), 0px 4px 18px 3px rgba(0,0,0,0.12)',
+              }}
+              src={picOfMe}
+              alt=''
+            />
+          </Grid>
+        </Hidden>
+        <Grid item xs={10} sm={6} lg={4} xl={3}>
           <Typography
-            style={{ color: 'white', fontWeight: 'bold' }}
+            style={{
+              color: 'white',
+              fontWeight: 'bold',
+              textShadow: '0px 2px 3px rgba(0,0,0,0.34)',
+            }}
             variant='h4'
+            align={width === 'xs' ? 'center' : 'left'}
             component='h2'
-            align='center'
             gutterBottom
           >
             Hey, I'm Austin!
           </Typography>
           <Typography
-            style={{ color: 'white' }}
+            style={{
+              color: 'white',
+              textShadow: '0px 2px 3px rgba(0,0,0,0.24)',
+            }}
             variant='h6'
+            align={width === 'xs' ? 'center' : 'left'}
             component='p'
-            align='center'
           >
             Freshly graduated with a bachelor's in computer engineering, I live,
             breathe, and dream code, and I'm ready to create the next big thing!
