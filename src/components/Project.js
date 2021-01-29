@@ -91,8 +91,8 @@ const Project = ({
     <Grid
       item
       xs={12}
-      sm={viewingFullDetails ? 12 : 4}
-      md={viewingFullDetails ? 10 : 3}
+      sm={viewingFullDetails ? 12 : 6}
+      md={viewingFullDetails ? 10 : 4}
       lg={viewingFullDetails ? 8 : 3}
       className={classes.root}
     >

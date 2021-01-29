@@ -50,7 +50,8 @@ const Projects = ({ width }) => {
       {viewingCard === -1 ? (
         projectsData.map((project, idx) => {
           return (
-            idx <= (width === 'sm' || width === 'xs' ? 5 : 7) && (
+            idx <=
+              (width === 'sm' || width === 'xs' || width === 'md' ? 5 : 7) && (
               <Project
                 width={width}
                 key={project.id}

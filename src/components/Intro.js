@@ -3,7 +3,7 @@ import { Grid, Hidden, Paper, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import codeSVG from '../code.svg';
 import Interest from './Interest';
-import picOfMe from '../picofme_cropped.JPG';
+import picOfMe from '../picofme_square.jpg';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,6 +20,12 @@ const useStyles = makeStyles((theme) => ({
     },
     // border: '1px solid red',
   },
+  picOfMe: {
+    margin: 'auto',
+    borderRadius: 10,
+    boxShadow:
+      '0px 6px 6px -3px rgba(0,0,0,0.2), 0px 10px 14px 1px rgba(0,0,0,0.14), 0px 4px 18px 3px rgba(0,0,0,0.12)',
+  },
 }));
 
 const AboutMe = ({ width }) => {
@@ -32,21 +38,27 @@ const AboutMe = ({ width }) => {
         justify='center'
         className={classes.grid}
       >
-        <Hidden xsDown>
-          <Grid item xs={6} sm={5} lg={4}>
+        <Hidden smDown>
+          <Grid
+            item
+            xs={6}
+            sm={5}
+            lg={4}
+            style={{
+              display: 'flex',
+            }}
+          >
             <img
-              style={{
-                maxWidth: width === 'sm' || width === 'md' ? '85%' : '70%',
-                borderRadius: 10,
-                boxShadow:
-                  '0px 6px 6px -3px rgba(0,0,0,0.2), 0px 10px 14px 1px rgba(0,0,0,0.14), 0px 4px 18px 3px rgba(0,0,0,0.12)',
-              }}
+              className={classes.picOfMe}
               src={picOfMe}
               alt=''
+              style={{
+                width: '65%',
+              }}
             />
           </Grid>
         </Hidden>
-        <Grid item xs={10} sm={6} lg={4} xl={3}>
+        <Grid item xs={10} md={6} lg={5}>
           <Typography
             style={{
               color: 'white',
@@ -76,8 +88,7 @@ const AboutMe = ({ width }) => {
             skills you have. So I have always strived to learn as much as I can
             about the things that interest me. I'm looking to join a team of
             passionate developers who will help me gain more experience as a
-            full stack developer, and introduce me to new concepts along the
-            way!
+            full stack dev, and introduce me to new concepts along the way!
           </Typography>
         </Grid>
       </Grid>
